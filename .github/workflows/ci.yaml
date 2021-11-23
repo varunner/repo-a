@@ -15,8 +15,8 @@ jobs:
     steps:
     - name: Trigger Repo B
       uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: varunner/repo-b
-          event-type: trigger
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: varunner/repo-b
+        event-type: trigger
+        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
