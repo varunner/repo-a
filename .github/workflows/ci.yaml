@@ -11,6 +11,8 @@ on:
 
 jobs:
   trigger:
+    runs-on: ubuntu-18.04
+    steps:
     - name: Trigger Repo B
       uses: peter-evans/repository-dispatch@v1
         with:
