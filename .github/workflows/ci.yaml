@@ -1,0 +1,19 @@
+name: "Repo A CI"
+on: 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Event name
+        required: true
+      data:
+        description: Event data
+        required: true
+
+jobs:
+  repo-b:
+    runs-on: ubuntu-18.04
+    uses: varunner/repo-b/.github/workflows/ci.yaml@master
+    with:
+      name: ${{ github.events.inputs.name }} 
+      data: ${{ github.events.inputs.data }} 
+      
