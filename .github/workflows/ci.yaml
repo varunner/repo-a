@@ -10,9 +10,11 @@ on:
         required: true
 
 jobs:
-  repo-b:
-    uses: varunner/repo-b/.github/workflows/ci.yaml@master
-    with:
-      name: ${{ github.events.inputs.name }} 
-      data: ${{ github.events.inputs.data }} 
-      
+  trigger:
+    - name: Trigger Repo B
+      uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: varunner/repo-b
+          event-type: trigger
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
