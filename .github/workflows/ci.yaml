@@ -11,7 +11,6 @@ on:
 
 jobs:
   repo-b:
-    runs-on: ubuntu-18.04
     uses: varunner/repo-b/.github/workflows/ci.yaml@master
     with:
       name: ${{ github.events.inputs.name }} 
