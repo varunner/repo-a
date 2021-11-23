@@ -16,7 +16,7 @@ jobs:
     - name: Trigger Repo B
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_PAT }}
         repository: varunner/repo-b
         event-type: trigger
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
