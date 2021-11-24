@@ -12,15 +12,19 @@ on:
         description: Event type
         required: true
         default: create
+  pull_request:
 
 jobs:
   trigger:
     runs-on: ubuntu-18.04
     steps:
-    - name: Trigger Repo B
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.GH_PAT }}
-        repository: varunner/repo-b
-        event-type: ${{ github.event.inputs.type }}
-        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+    - name: test
+      run: | 
+        echo "${{ github.event.action }}"
+    # - name: Trigger Repo B
+    #   uses: peter-evans/repository-dispatch@v1
+    #   with:
+    #     token: ${{ secrets.GH_PAT }}
+    #     repository: varunner/repo-b
+    #     event-type: ${{ github.event.inputs.type }}
+    #     client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
