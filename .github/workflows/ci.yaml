@@ -8,6 +8,10 @@ on:
       data:
         description: Event data
         required: true
+      type:
+        description: Event type
+        required: true
+        default: create
 
 jobs:
   trigger:
@@ -18,5 +22,5 @@ jobs:
       with:
         token: ${{ secrets.GH_PAT }}
         repository: varunner/repo-b
-        event-type: trigger
+        event-type: ${{ github.event.inputs.type }}
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
