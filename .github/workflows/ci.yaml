@@ -22,7 +22,7 @@ jobs:
       shell: bash
       run: | 
         if [[ ! "$GITHUB_REF"  = "refs/tags/"* ]]; then
-          if [[ "$GITHUB_EVENT_NAME" = "pull_request" ]]; 
+          if [[ "$GITHUB_EVENT_NAME" = "pull_request" ]]; then
             HEAD_REF=$(printf "%q" "${{ github.head_ref }}")
             HEAD_REF=${HEAD_REF/refs\/heads\//}
             echo "$HEAD_REF"  
