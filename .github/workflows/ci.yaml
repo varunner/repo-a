@@ -21,6 +21,7 @@ jobs:
     - name: test
       run: | 
         echo "${{ github.event.action }}"
+        echo "$GITHUB_BASE_REF" 
     # - name: Trigger Repo B
     #   uses: peter-evans/repository-dispatch@v1
     #   with:
