@@ -20,7 +20,7 @@ jobs:
     steps:
     - name: test
       run: | 
-				if [[ "${{ github.ref }}" != "refs/tags/"* ]]; then
+			  if [[ "${{ github.ref }}" != "refs/tags/"* ]]; then
           if [[ ${{ github.event_name }} == 'pull_request' ]]; then
             echo "${{ steps.branch.outputs.head_ref_branch }}"
           else
