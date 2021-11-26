@@ -26,7 +26,7 @@ jobs:
             HEAD_REF=$(printf "%q" "${{ github.head_ref }}")
             HEAD_REF=${HEAD_REF/refs\/heads\//}
             echo "$HEAD_REF"  
-          esle
+          else 
             REF=$(printf "%q" "${{ github.ref }}")
             REF_BRANCH=${REF/refs\/pull\//}
             REF_BRANCH=${REF_BRANCH/refs\/heads\//}
