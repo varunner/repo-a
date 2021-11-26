@@ -20,8 +20,18 @@ jobs:
     steps:
     - name: test
       run: | 
-        echo "${{ github.event.action }}"
-        echo "$GITHUB_BASE_REF" 
+				if [[ "${{ github.ref }}" != "refs/tags/"* ]]; then
+          if [[ ${{ github.event_name }} == 'pull_request' ]]; then
+            echo "${{ steps.branch.outputs.head_ref_branch }}"
+          else
+            echo "${{ steps.branch.outputs.ref_branch }}"
+          fi
+        else
+          REF=$(printf "%q" "${{ github.ref }}")
+          REF_BRANCH=${REF/refs\/tags\/${{ inputs.strip_tag_prefix }}/}
+          echo "$(eval printf "%s" "$REF_BRANCH")"
+        fi
+            
     # - name: Trigger Repo B
     #   uses: peter-evans/repository-dispatch@v1
     #   with:
