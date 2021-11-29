@@ -38,10 +38,10 @@ jobs:
           echo "$REF_BRANCH"
         fi
             
-    # - name: Trigger Repo B
-    #   uses: peter-evans/repository-dispatch@v1
-    #   with:
-    #     token: ${{ secrets.GH_PAT }}
-    #     repository: varunner/repo-b
-    #     event-type: ${{ github.event.inputs.type }}
-    #     client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+     - name: Trigger Repo B
+       uses: peter-evans/repository-dispatch@v1
+       with:
+         token: ${{ secrets.GH_PAT }}
+         repository: varunner/repo-b
+         event-type: ${{ github.event.inputs.type }}
+         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
