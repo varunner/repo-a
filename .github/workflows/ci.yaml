@@ -37,7 +37,11 @@ jobs:
     #       REF_BRANCH=${REF/refs\/tags\//}
     #       echo "$REF_BRANCH"
     #     fi
-            
+    - name: Extract PR
+      run: |
+        PR_NUMBER=$(echo "${{ github.ref }}"| awk 'BEGIN { FS = "/" } ; { print $3 }')
+        echo "::set-output name=value::$PR_NUMBER"
+
     - name: Trigger Repo B
       uses: peter-evans/repository-dispatch@v1
       with:
