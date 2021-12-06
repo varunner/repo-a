@@ -18,25 +18,7 @@ jobs:
   trigger:
     runs-on: ubuntu-18.04
     steps:
-    # - name: test
-    #   shell: bash
-    #   run: | 
-    #     if [[ ! "$GITHUB_REF"  = "refs/tags/"* ]]; then
-    #       if [[ "$GITHUB_EVENT_NAME" = "pull_request" ]]; then
-    #         HEAD_REF=$(printf "%q" "$GITHUB_HEAD_REF")
-    #         HEAD_REF=${HEAD_REF/refs\/heads\//}
-    #         echo "$HEAD_REF"  
-    #       else 
-    #         REF=$(printf "%q" "$GITHUB_REF")
-    #         REF_BRANCH=${REF/refs\/pull\//}
-    #         REF_BRANCH=${REF_BRANCH/refs\/heads\//}
-    #         echo "$REF_BRANCH"
-    #       fi
-    #     else 
-    #       REF=$(printf "%q" "$GITHUB_REF")
-    #       REF_BRANCH=${REF/refs\/tags\//}
-    #       echo "$REF_BRANCH"
-    #     fi
+
     - name: Extract PR
       run: |
         PR_NUMBER=$(echo "${{ github.ref }}"| awk 'BEGIN { FS = "/" } ; { print $3 }')
