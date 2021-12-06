@@ -13,7 +13,7 @@ on:
         required: true
         default: create
   pull_request:
-    types: [opended, reopended, closed]
+    types: [opened, reopened, closed]
 
 jobs:
   trigger:
@@ -25,7 +25,7 @@ jobs:
         PR_NUMBER=$(echo "${{ github.ref }}"| awk 'BEGIN { FS = "/" } ; { print $3 }')
         echo "PR NUMBER: ${{github.event.issue.number}}"
         echo "PR NUMBER: ${{github.event.number}}"
-        echo "::set-output name=value::$PR_NUMBER"
+        echo "::set-output name=value::${{ github.event.number }}"
 
     - name: Trigger Repo B
       uses: peter-evans/repository-dispatch@v1
