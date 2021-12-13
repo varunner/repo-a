@@ -1,0 +1,14 @@
+name: "Repo A CI"
+on: 
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Extract PR
+      run: |
+        PR_NUMBER=$(echo "${{ github.ref }}"| awk 'BEGIN { FS = "/" } ; { print $3 }')
+        echo "PR NUMBER: ${{github.event.issue.number}}"
+        echo "PR NUMBER: ${{github.event.number}}"
+        echo "::set-output name=value::$PR_NUMBER"
